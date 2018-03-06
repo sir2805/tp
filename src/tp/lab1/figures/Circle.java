@@ -27,12 +27,11 @@ public class Circle extends Ellipse {
 
 	@Override
 	public void draw(Graphics2D graphics2D) {
-		Point p1 = firstPoint;
+		int r = (int) centerPoint.distance(firstPoint);
 
-		double r = centerPoint.distance(p1);
+        firstPoint.setLocation(centerPoint.x, centerPoint.y + r);
 
-		graphics2D.draw(new Ellipse2D.Double(centerPoint.getX() - r,
-				centerPoint.getY() - r, 2 * r,2 * r));
+		super.draw(graphics2D);
 	}
 
 	public void finalize() throws Throwable {
