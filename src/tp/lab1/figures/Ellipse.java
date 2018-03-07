@@ -38,9 +38,9 @@ public class Ellipse extends Figure2D {
         double c = Math.abs(centerPoint.getX() - p1.getX());
         double p = Math.abs(centerPoint.getY() - p1.getY());
 
-        double e = (Math.sqrt(p*p/c/c + 4) - p/c)/2;
+        double e = (c == 0.0)?0:(Math.sqrt(p*p/c/c + 4) - p/c)/2;
 
-        double a = c / e;
+        double a = (e == 0.0)? p:c / e;
         double b = a*Math.sqrt(1 - e*e);
 
         graphics2D.draw(new Ellipse2D.Double(centerPoint.getX() - a,
