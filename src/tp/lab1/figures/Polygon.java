@@ -66,7 +66,14 @@ public class Polygon extends Figure2D {
 //        graphics2D.draw(path);
     }
 
-	public List<Point> getVertex() {
+    @Override
+    public void move() {
+        for (Point point : vertex) {
+            point.move(point.x + 50, point.y);
+        }
+    }
+
+    public List<Point> getVertex() {
 		return vertex;
 	}
 

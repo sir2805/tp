@@ -43,8 +43,5 @@ public abstract class Figure {
 		return centerPoint;
 	}
 
-	public void move(){
-
-	}
-
+	public abstract void move();
 }

@@ -27,7 +27,13 @@ public abstract class Figure1D extends Figure {
 		}
 	}
 
-	public void finalize() throws Throwable {
+    @Override
+    public void move() {
+        centerPoint.move(centerPoint.x + 50, centerPoint.y);
+        secondPoint.move(secondPoint.x + 50, secondPoint.y);
+    }
+
+    public void finalize() throws Throwable {
 		super.finalize();
 	}
 

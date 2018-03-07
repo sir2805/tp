@@ -19,19 +19,21 @@ public class Diamond extends SymmetricPolygon {
 		super.finalize();
 	}
 
-	protected void setMissingVertex(){
-		Point p1 = vertex.get(0);
+	protected void setMissingVertex() {
+        if (numberOfVertex != vertex.size()) {
+            Point p1 = vertex.get(0);
 
-		int x = (int) centerPoint.getX();
-		int y = (int) centerPoint.getY();
+            int x = (int) centerPoint.getX();
+            int y = (int) centerPoint.getY();
 
-		int delta_x = (int) Math.abs(x - p1.getX());
-		int delta_y = (int) Math.abs(y - p1.getY());
+            int delta_x = (int) Math.abs(x - p1.getX());
+            int delta_y = (int) Math.abs(y - p1.getY());
 
-		vertex.set(0, new Point(x, y - delta_y));
-		vertex.add(new Point(x + delta_x, y ));
-		vertex.add(new Point(x , y + delta_y));
-		vertex.add(new Point(x - delta_x, y ));
+            vertex.set(0, new Point(x, y - delta_y));
+            vertex.add(new Point(x + delta_x, y));
+            vertex.add(new Point(x, y + delta_y));
+            vertex.add(new Point(x - delta_x, y));
+        }
 	}
 
 	@Override

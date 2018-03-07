@@ -19,6 +19,12 @@ public abstract class SymmetricPolygon extends Polygon {
 		super.finalize();
 	}
 
+	@Override
+	public void move() {
+		centerPoint.move(centerPoint.x + 50, centerPoint.y);
+		super.move();
+	}
+
 	protected abstract void setMissingVertex();
 
 	@Override

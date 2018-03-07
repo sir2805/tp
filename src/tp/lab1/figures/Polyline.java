@@ -23,6 +23,7 @@ public class Polyline extends Figure {
 
     @Override
     public void setProvidedPoints(List<Point> points) {
+	    segments.clear();
         for (int i = 0; i < points.size() - 1; i++) {
             Segment segment = new Segment(lineColor);
             segment.setCenterPoint(points.get(i));
@@ -42,7 +43,14 @@ public class Polyline extends Figure {
         }
 	}
 
-	public List<Segment> getSegments() {
+    @Override
+    public void move() {
+        for (Segment segment : segments) {
+            segment.move();
+        }
+    }
+
+    public List<Segment> getSegments() {
 		return segments;
 	}
 

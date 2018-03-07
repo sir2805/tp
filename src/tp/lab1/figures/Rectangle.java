@@ -20,18 +20,20 @@ public class Rectangle extends SymmetricPolygon {
 	}
 
 	protected void setMissingVertex() {
-        Point p1 = vertex.get(0);
+        if (numberOfVertex != vertex.size()) {
+            Point p1 = vertex.get(0);
 
-        int x = (int) centerPoint.getX();
-        int y = (int) centerPoint.getY();
+            int x = centerPoint.x;
+            int y = centerPoint.y;
 
-        int delta_x = (int) Math.abs(x - p1.getX());
-        int delta_y = (int) Math.abs(y - p1.getY());
+            int delta_x = Math.abs(x - p1.x);
+            int delta_y = Math.abs(y - p1.y);
 
-        vertex.set(0, new Point(x - delta_x, y - delta_y));
-        vertex.add(new Point(x + delta_x, y - delta_y));
-        vertex.add(new Point(x + delta_x, y + delta_y));
-        vertex.add(new Point(x - delta_x, y + delta_y));
+            vertex.set(0, new Point(x - delta_x, y - delta_y));
+            vertex.add(new Point(x + delta_x, y - delta_y));
+            vertex.add(new Point(x + delta_x, y + delta_y));
+            vertex.add(new Point(x - delta_x, y + delta_y));
+        }
 	}
 
     @Override

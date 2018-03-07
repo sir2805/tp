@@ -34,10 +34,8 @@ public class Ellipse extends Figure2D {
 
     @Override
     public void draw(Graphics2D graphics2D) {
-        Point p1 = firstPoint;
-
-        double c = Math.abs(centerPoint.getX() - p1.getX());
-        double p = Math.abs(centerPoint.getY() - p1.getY());
+        double c = Math.abs(centerPoint.getX() - firstPoint.getX());
+        double p = Math.abs(centerPoint.getY() - firstPoint.getY());
 
         double e = (c == 0.0)?0:(Math.sqrt(p*p/c/c + 4) - p/c)/2;
 
@@ -52,7 +50,13 @@ public class Ellipse extends Figure2D {
         graphics2D.fill(ellipse2D);
     }
 
-	public Point getFirstPoint(){
+    @Override
+    public void move() {
+        centerPoint.move(centerPoint.x + 50, centerPoint.y);
+        firstPoint.move(firstPoint.x + 50, firstPoint.y);
+    }
+
+    public Point getFirstPoint(){
 		return null;
 	}
 

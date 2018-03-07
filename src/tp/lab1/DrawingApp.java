@@ -41,6 +41,12 @@ public class DrawingApp extends JFrame {
             }
         });
 
+        JButton moveButton = new JButton("Move");
+        moveButton.addActionListener(ae -> {
+            currentFigure.move();
+            repaint();
+        });
+
         for (String figureType : FIGURE_TYPES) {
             JRadioButton button = new JRadioButton(figureType);
             if (figureType.equals(POLYGON) || figureType.equals(REGULAR_POLYGON)) {
@@ -92,6 +98,7 @@ public class DrawingApp extends JFrame {
 
         this.setLayout(new BorderLayout());
         radioPanel.add(colorSelectButton);
+        radioPanel.add(moveButton);
         this.add(radioPanel, BorderLayout.WEST);
         this.add(canvas, BorderLayout.CENTER);
 
@@ -110,7 +117,6 @@ public class DrawingApp extends JFrame {
         }
     }
 
-    // The entry main method
     public static void main(String[] args) {
         SwingUtilities.invokeLater(DrawingApp::new);
     }
