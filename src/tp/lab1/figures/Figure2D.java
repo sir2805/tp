@@ -8,10 +8,10 @@ import java.awt.*;
  */
 public abstract class Figure2D extends Figure {
 
-	private Color pouringColor;
+	protected Color pouringColor;
 
-	public Figure2D(){
-
+	public Figure2D(Color pouringColor){
+		this.pouringColor = pouringColor;
 	}
 
 	public void finalize() throws Throwable {

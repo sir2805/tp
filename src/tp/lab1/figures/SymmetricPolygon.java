@@ -11,8 +11,8 @@ import java.util.List;
  */
 public abstract class SymmetricPolygon extends Polygon {
 
-	public SymmetricPolygon(){
-
+	public SymmetricPolygon(Color pouringColor) {
+		super(pouringColor);
 	}
 
 	public void finalize() throws Throwable {

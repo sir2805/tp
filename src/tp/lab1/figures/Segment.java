@@ -9,8 +9,8 @@ import java.awt.*;
  */
 public class Segment extends Figure1D {
 
-	public Segment() {
-
+	public Segment(Color lineColor) {
+		super(lineColor);
 	}
 
 	public void finalize() throws Throwable {
@@ -20,6 +20,7 @@ public class Segment extends Figure1D {
 	@Override
 	public void draw(Graphics2D graphics2D) {
 		if (centerPoint != null && secondPoint != null) {
+		    graphics2D.setColor(lineColor);
 			graphics2D.drawLine(centerPoint.x, centerPoint.y, secondPoint.x, secondPoint.y);
 		}
 	}

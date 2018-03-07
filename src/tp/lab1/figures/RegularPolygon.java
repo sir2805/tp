@@ -9,11 +9,12 @@ import java.awt.*;
  */
 public class RegularPolygon extends SymmetricPolygon {
 
-	public RegularPolygon(){
-		numberOfPointsToPaint = 2;
+	public RegularPolygon(Color pouringColor) {
+		super(pouringColor);
+		this.numberOfPointsToPaint = 2;
 	}
 
-    @Override
+	@Override
     public void setNumberOfVertex(int numberOfVertex) {
         this.numberOfVertex = numberOfVertex;
     }

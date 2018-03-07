@@ -10,11 +10,11 @@ import java.util.List;
  */
 public class Line extends Ray {
 
-	public Line(){
-        this.numberOfPointsToPaint = 2;
-	}
+    public Line(Color lineColor) {
+        super(lineColor);
+    }
 
-	public void finalize() throws Throwable {
+    public void finalize() throws Throwable {
 		super.finalize();
 	}
 

@@ -17,8 +17,8 @@ public class Polygon extends Figure2D {
 
 	protected int numberOfVertex;
 
-	public Polygon(){
-
+	public Polygon(Color pouringColor) {
+		super(pouringColor);
 	}
 
 	public int getNumberOfVertex() {
@@ -45,15 +45,25 @@ public class Polygon extends Figure2D {
 
     @Override
     public void draw(Graphics2D graphics2D) {
-        GeneralPath path = new GeneralPath();
+		java.awt.Polygon polygon = new java.awt.Polygon();
 
-        path.moveTo(vertex.get(0).getX(), vertex.get(0).getY());
-        for (int i = 1; i < vertex.size(); i++){
-            path.lineTo(vertex.get(i).getX(), vertex.get(i).getY());
-        }
-        path.closePath();
+		for (Point point : vertex) {
+			polygon.addPoint(point.x, point.y);
+		}
+		polygon.addPoint(vertex.get(0).x, vertex.get(0).y);
 
-        graphics2D.draw(path);
+        graphics2D.draw(polygon);
+		graphics2D.setColor(pouringColor);
+		graphics2D.fillPolygon(polygon);
+//
+//		GeneralPath path = new GeneralPath();
+//
+//        path.moveTo(vertex.get(0).getX(), vertex.get(0).getY());
+//        for (int i = 1; i < vertex.size(); i++){
+//            path.lineTo(vertex.get(i).getX(), vertex.get(i).getY());
+//        }
+//        path.closePath();
+//        graphics2D.draw(path);
     }
 
 	public List<Point> getVertex() {

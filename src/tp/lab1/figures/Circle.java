@@ -1,7 +1,6 @@
 package tp.lab1.figures;
 
 import java.awt.*;
-import java.awt.geom.Ellipse2D;
 import java.util.List;
 
 /**
@@ -11,8 +10,8 @@ import java.util.List;
  */
 public class Circle extends Ellipse {
 
-	public Circle() {
-		this.numberOfPointsToPaint = 2;
+	public Circle(Color pouringColor) {
+		super(pouringColor);
 	}
 
 	@Override

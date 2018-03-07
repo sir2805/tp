@@ -1,9 +1,7 @@
 package tp.lab1;
 
-import tp.lab1.figures.Figure;
-import tp.lab1.figures.FigureFactory;
+import tp.lab1.figures.*;
 import tp.lab1.figures.Polygon;
-import tp.lab1.figures.Polyline;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -20,6 +18,8 @@ public class DrawingApp extends JFrame {
 
     private List<Point> currentPoints = new ArrayList<>();
 
+    private Color currentColor;
+
     private static final String[] FIGURE_TYPES = {SEGMENT, RAY, LINE, POLYLINE, RECTANGLE, CIRCLE, ELLIPSE, DIAMOND, POLYGON, REGULAR_POLYGON};
 
     public static final int CANVAS_WIDTH = 800;
@@ -30,25 +30,36 @@ public class DrawingApp extends JFrame {
         ButtonGroup cbg = new ButtonGroup();
         List<JRadioButton> buttons = new ArrayList<>();
 
+        JButton colorSelectButton = new JButton("Choose color");
+        colorSelectButton.addActionListener(ae -> {
+            currentColor = JColorChooser.showDialog(((Component) ae.getSource())
+                    .getParent(), "Demo", Color.blue);
+            if (Figure1D.class.isAssignableFrom(currentFigure.getClass())) {
+                ((Figure1D)currentFigure).setLineColor(currentColor);
+            } else if (Figure2D.class.isAssignableFrom(currentFigure.getClass())) {
+                ((Figure2D)currentFigure).setPouringColor(currentColor);
+            }
+        });
+
         for (String figureType : FIGURE_TYPES) {
             JRadioButton button = new JRadioButton(figureType);
             if (figureType.equals(POLYGON) || figureType.equals(REGULAR_POLYGON)) {
                 button.addActionListener(ae -> {
-                    currentFigure = FigureFactory.createFigure(ae.getActionCommand());
+                    currentFigure = FigureFactory.createFigure(ae.getActionCommand(), currentColor);
                     System.out.println(currentFigure.getClass().toString());
                     Integer numberOfVertex = Integer.valueOf(JOptionPane.showInputDialog("Please input number of vertex"));
                     ((Polygon) currentFigure).setNumberOfVertex(numberOfVertex);
                 });
             } else if (figureType.equals(POLYLINE)) {
                 button.addActionListener(ae -> {
-                    currentFigure = FigureFactory.createFigure(ae.getActionCommand());
+                    currentFigure = FigureFactory.createFigure(ae.getActionCommand(), currentColor);
                     System.out.println(currentFigure.getClass().toString());
                     Integer numberOfSegments = Integer.valueOf(JOptionPane.showInputDialog("Please input number of segments"));
                     ((Polyline) currentFigure).setNumberOfSegments(numberOfSegments);
                 });
             } else {
                 button.addActionListener(ae -> {
-                    currentFigure = FigureFactory.createFigure(ae.getActionCommand());
+                    currentFigure = FigureFactory.createFigure(ae.getActionCommand(), currentColor);
                     System.out.println(currentFigure.getClass().toString());
                 });
             }
@@ -57,9 +68,9 @@ public class DrawingApp extends JFrame {
         }
 
         buttons.get(0).setSelected(true);
-        currentFigure = FigureFactory.createFigure(buttons.get(0).getText());
+        currentFigure = FigureFactory.createFigure(buttons.get(0).getText(), Color.BLACK);
         System.out.println(currentFigure.getClass().toString());
-        JPanel radioPanel = new JPanel(new FlowLayout());
+        JPanel radioPanel = new JPanel(new GridLayout(0, 1));
         for (JRadioButton button : buttons) {
             radioPanel.add(button);
         }
@@ -80,8 +91,8 @@ public class DrawingApp extends JFrame {
         });
 
         this.setLayout(new BorderLayout());
-        this.add(radioPanel, BorderLayout.NORTH);
-
+        radioPanel.add(colorSelectButton);
+        this.add(radioPanel, BorderLayout.WEST);
         this.add(canvas, BorderLayout.CENTER);
 
         this.pack();

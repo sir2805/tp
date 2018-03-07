@@ -11,8 +11,8 @@ import static tp.lab1.DrawingApp.CANVAS_HEIGHT;
  */
 public class Ray extends Segment {
 
-	public Ray(){
-
+	public Ray(Color lineColor) {
+		super(lineColor);
 	}
 
 	public void finalize() throws Throwable {

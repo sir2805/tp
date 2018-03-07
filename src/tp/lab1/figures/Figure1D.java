@@ -12,7 +12,8 @@ public abstract class Figure1D extends Figure {
 	protected Color lineColor;
 	protected Point secondPoint;
 
-	public Figure1D(){
+	public Figure1D(Color lineColor){
+		this.lineColor = lineColor;
 		this.numberOfPointsToPaint = 2;
 	}
 

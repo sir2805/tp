@@ -13,16 +13,18 @@ public class Polyline extends Figure {
 
 	private List<Segment> segments = new ArrayList<>();
 
+	private Color lineColor;
+
 	private int numberOfSegments;
 
-	public Polyline(){
-
+	public Polyline(Color lineColor) {
+        this.lineColor = lineColor;
 	}
 
     @Override
     public void setProvidedPoints(List<Point> points) {
         for (int i = 0; i < points.size() - 1; i++) {
-            Segment segment = new Segment();
+            Segment segment = new Segment(lineColor);
             segment.setCenterPoint(points.get(i));
             segment.setSecondPoint(points.get(i + 1));
             segments.add(segment);

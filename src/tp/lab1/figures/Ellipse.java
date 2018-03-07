@@ -13,7 +13,8 @@ public class Ellipse extends Figure2D {
 
 	protected Point firstPoint;
 
-	public Ellipse(){
+	public Ellipse(Color pouringColor) {
+		super(pouringColor);
 		this.numberOfPointsToPaint = 2;
 	}
 
@@ -43,8 +44,12 @@ public class Ellipse extends Figure2D {
         double a = (e == 0.0)? p:c / e;
         double b = a*Math.sqrt(1 - e*e);
 
-        graphics2D.draw(new Ellipse2D.Double(centerPoint.getX() - a,
-                centerPoint.getY() - b, 2 * a,2 * b));
+        Ellipse2D ellipse2D = new Ellipse2D.Double(centerPoint.getX() - a,
+                centerPoint.getY() - b, 2 * a,2 * b);
+
+        graphics2D.draw(ellipse2D);
+        graphics2D.setColor(pouringColor);
+        graphics2D.fill(ellipse2D);
     }
 
 	public Point getFirstPoint(){

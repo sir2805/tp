@@ -9,12 +9,13 @@ import java.awt.*;
  */
 public class Rectangle extends SymmetricPolygon {
 
-	public Rectangle() {
-		this.numberOfVertex = 4;
-		this.numberOfPointsToPaint = 2;
-	}
+    public Rectangle(Color pouringColor) {
+        super(pouringColor);
+        this.numberOfVertex = 4;
+        this.numberOfPointsToPaint = 2;
+    }
 
-	public void finalize() throws Throwable {
+    public void finalize() throws Throwable {
 		super.finalize();
 	}
 
@@ -31,8 +32,6 @@ public class Rectangle extends SymmetricPolygon {
         vertex.add(new Point(x + delta_x, y - delta_y));
         vertex.add(new Point(x + delta_x, y + delta_y));
         vertex.add(new Point(x - delta_x, y + delta_y));
-        //g2d.draw(new Rectangle2D.Double(Center.getX() - delta_x,
-        //        Center.getY() - delta_y, 2 * delta_x,2 * delta_y));
 	}
 
     @Override

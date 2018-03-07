@@ -9,9 +9,10 @@ import java.awt.*;
  */
 public class Diamond extends SymmetricPolygon {
 
-	public Diamond(){
-        this.numberOfVertex = 4;
-        this.numberOfPointsToPaint = 2;
+	public Diamond(Color pouringColor) {
+		super(pouringColor);
+		this.numberOfVertex = 4;
+		this.numberOfPointsToPaint = 2;
 	}
 
 	public void finalize() throws Throwable {

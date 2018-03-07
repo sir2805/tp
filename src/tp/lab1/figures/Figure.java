@@ -16,7 +16,7 @@ public abstract class Figure {
 
 	public Figure(){
 
-        numberOfPointsToPaint = 1;
+        this.numberOfPointsToPaint = 1;
     }
 
 	public abstract void setProvidedPoints(List<Point> points);
